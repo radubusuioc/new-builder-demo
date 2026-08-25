@@ -5,6 +5,12 @@ import { builds } from "@/lib/builds";
 
 const claudeCodePrompt = `Use the RoryPlans MCP. Load get_next_task, complete_task, and fail_task if needed. Pull one task with get_next_task using {"agentId":"claude-code"}. Execute it in this repository, verify it, then call complete_task with the taskId, changed files, and a short factual summary. If blocked, call fail_task. Handle one task only.`;
 
+const repoUrl = "https://github.com/radubusuioc/new-builder-demo";
+
+const cloneCommand = `git clone ${repoUrl}.git
+cd new-builder-demo
+pnpm install`;
+
 const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task using {"agentId":"codex"}. Execute it in this repository, verify it, then call complete_task with the taskId, changed files, and a short factual summary. If blocked, call fail_task. Handle one task only.`;
 
 const steps = [
@@ -32,7 +38,7 @@ const steps = [
     number: "05",
     id: "pull-task",
     title: "Pull and implement",
-    body: "Open this repository in Claude Code or Codex and paste the prompt for the agent you connected. It will pull one task, implement it here, verify the result, and report back to RoryPlans.",
+    body: "Clone this repository, then start Claude Code or Codex inside it and paste the prompt for the agent you connected. It will pull one task, implement it here, verify the result, and report back to RoryPlans.",
     prompts: true,
   },
   {
@@ -128,30 +134,45 @@ export default function Home() {
                     </a>
                   ) : null}
                   {step.prompts ? (
-                    <div className="prompt-grid">
-                      <article className="agent-card">
-                        <div className="agent-card-heading">
-                          <span className="agent-monogram claude-monogram">C</span>
-                          <div>
-                            <p>Anthropic</p>
-                            <h4>Claude Code</h4>
+                    <>
+                      <div className="step-setup">
+                        <p className="setup-label">Clone the repository</p>
+                        <pre>{cloneCommand}</pre>
+                        <CopyButton text={cloneCommand} idleLabel="Copy clone commands" />
+                        <p className="setup-note">
+                          Then run <code>claude</code> or <code>codex</code> in the{" "}
+                          <code>new-builder-demo</code> folder and paste the matching
+                          prompt below. Requires Node 24 and pnpm.
+                        </p>
+                        <a href={repoUrl} target="_blank" rel="noreferrer">
+                          View the repository on GitHub ↗
+                        </a>
+                      </div>
+                      <div className="prompt-grid">
+                        <article className="agent-card">
+                          <div className="agent-card-heading">
+                            <span className="agent-monogram claude-monogram">C</span>
+                            <div>
+                              <p>Anthropic</p>
+                              <h4>Claude Code</h4>
+                            </div>
                           </div>
-                        </div>
-                        <pre>{claudeCodePrompt}</pre>
-                        <CopyButton text={claudeCodePrompt} idleLabel="Copy Claude Code prompt" />
-                      </article>
-                      <article className="agent-card">
-                        <div className="agent-card-heading">
-                          <span className="agent-monogram codex-monogram">O</span>
-                          <div>
-                            <p>OpenAI</p>
-                            <h4>Codex</h4>
+                          <pre>{claudeCodePrompt}</pre>
+                          <CopyButton text={claudeCodePrompt} idleLabel="Copy Claude Code prompt" />
+                        </article>
+                        <article className="agent-card">
+                          <div className="agent-card-heading">
+                            <span className="agent-monogram codex-monogram">O</span>
+                            <div>
+                              <p>OpenAI</p>
+                              <h4>Codex</h4>
+                            </div>
                           </div>
-                        </div>
-                        <pre>{codexPrompt}</pre>
-                        <CopyButton text={codexPrompt} idleLabel="Copy Codex prompt" />
-                      </article>
-                    </div>
+                          <pre>{codexPrompt}</pre>
+                          <CopyButton text={codexPrompt} idleLabel="Copy Codex prompt" />
+                        </article>
+                      </div>
+                    </>
                   ) : null}
                 </div>
               </li>

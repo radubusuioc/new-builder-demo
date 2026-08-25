@@ -548,6 +548,43 @@ pre {
   text-underline-offset: 4px;
 }
 
+.step-setup {
+  background: var(--white);
+  border: 1px solid var(--line);
+  margin-top: 22px;
+  padding: clamp(20px, 2.4vw, 28px);
+}
+
+.setup-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.step-setup pre {
+  background: #f3f1eb;
+  border: 1px solid var(--line);
+  margin: 16px 0;
+  overflow-wrap: anywhere;
+  padding: 16px;
+}
+
+.step-setup .setup-note {
+  font-size: 14px;
+  margin: 16px 0 0;
+}
+
+.step-setup code {
+  background: #f3f1eb;
+  border: 1px solid var(--line);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  padding: 1px 5px;
+}
+
 .prompt-grid {
   display: grid;
   gap: 20px;
