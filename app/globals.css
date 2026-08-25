@@ -95,6 +95,21 @@ a {
   text-underline-offset: 4px;
 }
 
+.site-header nav {
+  align-items: center;
+}
+
+.site-header .header-cta {
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 16px;
+  white-space: nowrap;
+}
+
+.site-header nav a.header-cta:hover {
+  text-decoration: none;
+}
+
 .hero {
   display: grid;
   gap: clamp(40px, 6vw, 96px);
@@ -890,6 +905,11 @@ a.build-card:hover {
 @media (max-width: 680px) {
   .site-header nav a:first-child {
     display: none;
+  }
+
+  .site-header .header-cta {
+    min-height: 34px;
+    padding: 6px 12px;
   }
 
   .site-header nav {

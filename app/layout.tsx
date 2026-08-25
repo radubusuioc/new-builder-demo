@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { repoUrl } from "@/lib/repo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,6 +36,15 @@ export default function RootLayout({
           <nav aria-label="Primary navigation">
             <Link href="/#how-it-works">How it works</Link>
             <Link href="/builds">Build Wall</Link>
+            <a
+              className="button button-secondary header-cta"
+              href={repoUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span aria-hidden="true">★</span>
+              GitHub ↗
+            </a>
           </nav>
         </header>
         {children}
