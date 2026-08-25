@@ -2,10 +2,9 @@ import Link from "next/link";
 import { BuilderIdeaRoulette } from "@/components/builder-idea-roulette";
 import { CopyButton } from "@/components/copy-button";
 import { builds } from "@/lib/builds";
+import { repoUrl } from "@/lib/repo";
 
 const claudeCodePrompt = `Use the RoryPlans MCP. Load get_next_task, complete_task, and fail_task if needed. Pull one task with get_next_task using {"agentId":"claude-code"}. Execute it in this repository, verify it, then call complete_task with the taskId, changed files, and a short factual summary. If blocked, call fail_task. Handle one task only.`;
-
-const repoUrl = "https://github.com/radubusuioc/new-builder-demo";
 
 const cloneCommand = `git clone ${repoUrl}.git
 cd new-builder-demo
