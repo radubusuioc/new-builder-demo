@@ -30,8 +30,10 @@ const steps = [
   },
   {
     number: "05",
+    id: "pull-task",
     title: "Pull and implement",
-    body: "Open this repository in Claude Code or Codex, paste the matching worker prompt below, and let the agent implement and verify one task.",
+    body: "Open this repository in Claude Code or Codex and paste the prompt for the agent you connected. It will pull one task, implement it here, verify the result, and report back to RoryPlans.",
+    prompts: true,
   },
   {
     number: "06",
@@ -125,45 +127,36 @@ export default function Home() {
                       {step.action} ↗
                     </a>
                   ) : null}
+                  {step.prompts ? (
+                    <div className="prompt-grid">
+                      <article className="agent-card">
+                        <div className="agent-card-heading">
+                          <span className="agent-monogram claude-monogram">C</span>
+                          <div>
+                            <p>Anthropic</p>
+                            <h4>Claude Code</h4>
+                          </div>
+                        </div>
+                        <pre>{claudeCodePrompt}</pre>
+                        <CopyButton text={claudeCodePrompt} idleLabel="Copy Claude Code prompt" />
+                      </article>
+                      <article className="agent-card">
+                        <div className="agent-card-heading">
+                          <span className="agent-monogram codex-monogram">O</span>
+                          <div>
+                            <p>OpenAI</p>
+                            <h4>Codex</h4>
+                          </div>
+                        </div>
+                        <pre>{codexPrompt}</pre>
+                        <CopyButton text={codexPrompt} idleLabel="Copy Codex prompt" />
+                      </article>
+                    </div>
+                  ) : null}
                 </div>
               </li>
             ))}
           </ol>
-        </section>
-
-        <section className="agent-prompts" aria-labelledby="agent-prompts-title">
-          <div className="section-heading section-heading-light">
-            <p className="eyebrow">Step 5 · Pull the task</p>
-            <h2 id="agent-prompts-title">Give your agent one clear instruction</h2>
-            <p>
-              Use the prompt for the agent you connected. It will pull one task,
-              implement it here, verify the result, and report back to RoryPlans.
-            </p>
-          </div>
-          <div className="prompt-grid">
-            <article className="agent-card">
-              <div className="agent-card-heading">
-                <span className="agent-monogram claude-monogram">C</span>
-                <div>
-                  <p>Anthropic</p>
-                  <h3>Claude Code</h3>
-                </div>
-              </div>
-              <pre>{claudeCodePrompt}</pre>
-              <CopyButton text={claudeCodePrompt} idleLabel="Copy Claude Code prompt" />
-            </article>
-            <article className="agent-card">
-              <div className="agent-card-heading">
-                <span className="agent-monogram codex-monogram">O</span>
-                <div>
-                  <p>OpenAI</p>
-                  <h3>Codex</h3>
-                </div>
-              </div>
-              <pre>{codexPrompt}</pre>
-              <CopyButton text={codexPrompt} idleLabel="Copy Codex prompt" />
-            </article>
-          </div>
         </section>
 
         <section className="build-wall-preview" aria-labelledby="build-wall-title">

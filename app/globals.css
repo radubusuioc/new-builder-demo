@@ -491,7 +491,6 @@ pre {
 }
 
 .workflow,
-.agent-prompts,
 .build-wall-preview {
   margin-top: clamp(110px, 14vw, 190px);
 }
@@ -549,32 +548,21 @@ pre {
   text-underline-offset: 4px;
 }
 
-.agent-prompts {
-  background: var(--ink);
-  color: var(--white);
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding: clamp(70px, 9vw, 120px) max(24px, calc((100vw - 1212px) / 2));
-}
-
-.section-heading-light > p:last-child {
-  color: #aaa8a2;
-}
-
 .prompt-grid {
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr;
-  margin-top: 54px;
+  margin-top: 24px;
 }
 
 .agent-card {
   background: var(--white);
+  border: 1px solid var(--line);
   color: var(--ink);
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: clamp(26px, 4vw, 42px);
+  padding: clamp(20px, 2.4vw, 28px);
 }
 
 .agent-card-heading {
@@ -584,7 +572,7 @@ pre {
 }
 
 .agent-card-heading p,
-.agent-card-heading h3 {
+.agent-card-heading h4 {
   margin: 0;
 }
 
@@ -595,8 +583,8 @@ pre {
   text-transform: uppercase;
 }
 
-.agent-card-heading h3 {
-  font-size: 24px;
+.agent-card-heading h4 {
+  font-size: 20px;
   letter-spacing: -.04em;
 }
 
@@ -604,11 +592,11 @@ pre {
   align-items: center;
   border-radius: 12px;
   display: flex;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 900;
-  height: 52px;
+  height: 44px;
   justify-content: center;
-  width: 52px;
+  width: 44px;
 }
 
 .claude-monogram {
@@ -623,9 +611,9 @@ pre {
   background: #f3f1eb;
   border: 1px solid var(--line);
   flex: 1;
-  margin: 28px 0 20px;
-  min-height: 190px;
-  padding: 20px;
+  margin: 20px 0 16px;
+  min-height: 170px;
+  padding: 16px;
 }
 
 .agent-card .button {
