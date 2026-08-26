@@ -56,7 +56,7 @@ export function BuilderIdeaRoulette() {
               idleLabel="Copy task for RoryPlans"
               className="button button-dark result-copy"
             />
-            <a className="text-link" href="#create-task">
+            <a className="text-link" href="#create-plan">
               Task copied? Continue to RoryPlans ↓
             </a>
           </>
