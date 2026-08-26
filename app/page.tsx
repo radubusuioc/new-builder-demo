@@ -16,8 +16,8 @@ const steps = [
   {
     number: "02",
     id: "create-task",
-    title: "Create the work in RoryPlans",
-    body: "Paste the Roulette brief into a new task. For the extended hack, create a small plan first and add the task under one goal.",
+    title: "Ask Rory to create the task",
+    body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details. For the extended hack, ask Rory to create a small plan first and add the task under one goal.",
     action: "Open RoryPlans",
     href: "https://www.roryplans.ai",
   },

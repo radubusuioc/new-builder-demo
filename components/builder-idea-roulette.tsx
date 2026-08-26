@@ -27,8 +27,8 @@ export function BuilderIdeaRoulette() {
         <p className="eyebrow">Step 1 · Choose the outcome</p>
         <h2 id="roulette-title">Spin the Builder Idea Roulette</h2>
         <p>
-          Get a small page idea and a complete task brief. Copy it into
-          RoryPlans, then decide which coding agent should own the work.
+          Get a small page idea and a ready-to-send task prompt. Paste it into
+          RoryPlans chat, then decide which coding agent should own the work.
         </p>
         <button className="button button-primary roulette-button" type="button" onClick={spin}>
           <span aria-hidden="true">↻</span>
@@ -42,7 +42,7 @@ export function BuilderIdeaRoulette() {
           <>
             <div className="result-heading">
               <div>
-                <p className="result-label">Your task</p>
+                <p className="result-label">Your task prompt</p>
                 <h3>{selectedIdea.title}</h3>
               </div>
               <span className="route-chip">{selectedIdea.route}</span>
@@ -53,11 +53,11 @@ export function BuilderIdeaRoulette() {
             </div>
             <CopyButton
               text={taskPromptForIdea(selectedIdea)}
-              idleLabel="Copy task for RoryPlans"
+              idleLabel="Copy prompt for Rory"
               className="button button-dark result-copy"
             />
             <a className="text-link" href="#create-task">
-              Task copied? Continue to RoryPlans ↓
+              Prompt copied? Continue to RoryPlans ↓
             </a>
           </>
         ) : (
