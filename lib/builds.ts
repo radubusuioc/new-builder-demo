@@ -15,4 +15,12 @@ export const builds: Build[] = [
     builder: "The New Builder Lab",
     accent: "lime",
   },
+  {
+    slug: "prompt-remixer",
+    title: "Prompt Remix Button",
+    description:
+      "Mix a user, a problem, and a constraint into a playful build prompt.",
+    builder: "The New Builder Lab",
+    accent: "lime",
+  },
 ];
