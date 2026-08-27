@@ -113,25 +113,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mode-strip" aria-label="Choose your demo mode">
-        <div>
-          <span className="mode-number">A</span>
-          <p>
-            <strong>Quick build</strong>
-            Create one task and ship one page.
-          </p>
-          <span>5–10 min</span>
-        </div>
-        <div>
-          <span className="mode-number">B</span>
-          <p>
-            <strong>Extended hack</strong>
-            Create a small plan, then ship its first task.
-          </p>
-          <span>15–30 min</span>
-        </div>
-      </section>
-
       <div className="page-shell">
         <section
           className="opening-step"
