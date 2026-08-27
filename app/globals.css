@@ -861,6 +861,133 @@ a.build-card:hover {
   max-width: 60%;
 }
 
+.confidence-meter {
+  border: 1px solid var(--ink);
+  box-shadow: 14px 14px 0 var(--ink);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+  margin-top: clamp(44px, 6vw, 80px);
+}
+
+.confidence-control {
+  background: var(--lime);
+  padding: clamp(32px, 5vw, 64px);
+}
+
+.confidence-control h2 {
+  font-size: clamp(36px, 4.5vw, 66px);
+  letter-spacing: -.06em;
+  line-height: .94;
+  margin: 0;
+  max-width: 620px;
+}
+
+.confidence-intro {
+  font-size: 17px;
+  margin: 26px 0 0;
+  max-width: 510px;
+}
+
+.confidence-range-wrap {
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+.confidence-range-wrap label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.confidence-range-wrap input[type="range"] {
+  accent-color: var(--purple);
+  cursor: pointer;
+  width: 100%;
+}
+
+.confidence-scale {
+  color: var(--muted);
+  display: flex;
+  font-size: 11px;
+  font-weight: 800;
+  justify-content: space-between;
+  letter-spacing: .06em;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+.confidence-result {
+  background: var(--purple);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: clamp(32px, 5vw, 64px);
+}
+
+.confidence-score {
+  align-items: baseline;
+  display: flex;
+  gap: 8px;
+}
+
+.confidence-score span {
+  font-size: clamp(70px, 10vw, 140px);
+  font-weight: 900;
+  letter-spacing: -.1em;
+  line-height: .8;
+}
+
+.confidence-score small {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.confidence-result > .result-label {
+  margin-top: clamp(36px, 6vw, 78px);
+}
+
+.confidence-message {
+  font-size: clamp(22px, 2.5vw, 34px);
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: 1.08;
+  margin: 10px 0 0;
+  max-width: 500px;
+}
+
+.confidence-action {
+  border-top: 1px solid var(--ink);
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 22px;
+}
+
+.confidence-action-mark {
+  align-items: center;
+  background: var(--lime);
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 20px;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+.confidence-action .result-label {
+  margin-bottom: 5px;
+}
+
+.confidence-action p:last-child {
+  font-size: 16px;
+  margin: 0;
+}
+
 .site-footer {
   align-items: center;
   border-top: 1px solid var(--line);
@@ -893,7 +1020,8 @@ a.build-card:hover {
   }
 
   .roulette-card,
-  .badge-maker {
+  .badge-maker,
+  .confidence-meter {
     grid-template-columns: 1fr;
   }
 
@@ -972,6 +1100,10 @@ a.build-card:hover {
   .badge-preview {
     aspect-ratio: auto;
     min-height: 410px;
+  }
+
+  .confidence-meter {
+    box-shadow: 7px 7px 0 var(--ink);
   }
 
   .site-footer {
