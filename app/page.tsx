@@ -50,8 +50,16 @@ const steps = [
     body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
   },
   {
-    title: "Assign the task",
-    body: "Stay on your RoryPlans task, assign it to the agent you connected in step 03, and run it so the work enters that agent\u2019s queue.",
+    title: "Assign the task, then run it",
+    body: "Assigning only records who owns the task. Running is what pushes it into the agent\u2019s queue, so do both \u2014 a task that is assigned but never run will never be picked up.",
+    details: [
+      "Open the plan and hover the row for the task you just created.",
+      "Click the assignee cell on that row to open the Select Agent modal.",
+      "Choose the agent you connected in step 03 \u2014 not whichever agent is listed first.",
+      "Click Assign agent and wait for \u201cCreating schedule\u2026\u201d to finish.",
+      "A green Run button now appears in that same assignee cell. Click it.",
+      "The task is queued once Run succeeds. Your agent picks it up on its next pull.",
+    ],
   },
   {
     id: "pull-task",
