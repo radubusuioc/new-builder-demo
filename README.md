@@ -21,7 +21,7 @@ Open [http://localhost:3000](http://localhost:3000).
 2. Spin the Builder Idea Roulette on the homepage and copy the generated task prompt.
 3. In RoryPlans Manage Agents, connect Claude Code or Codex through MCP, then restart the agent.
 4. In RoryPlans, click New Plan and select Create Empty Canvas plan.
-5. Paste the prompt into the RoryPlans chat and ask Rory to create the task in that plan.
+5. Paste the prompt into the RoryPlans chat — it creates the task in the plan you have open.
 6. Assign the task to the connected agent, then click the green Run button to queue it.
 7. Open this repository in the coding agent and use the matching worker prompt from the homepage.
 8. Review the new page and the completed RoryPlans task.
