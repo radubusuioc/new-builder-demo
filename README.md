@@ -17,14 +17,15 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Participant flow
 
-1. Spin the Builder Idea Roulette on the homepage.
-2. Copy the generated task prompt.
-3. In RoryPlans, click New Plan and select Create Empty Canvas plan.
-4. Paste the prompt into the RoryPlans chat and ask Rory to create the task in that plan.
-5. In RoryPlans Manage Agents, connect Claude Code or Codex through MCP.
-6. Assign the task to that agent.
-7. Open this repository in the coding agent and use the matching worker prompt from the homepage.
-8. Review the new page and the completed RoryPlans task.
+1. Open RoryPlans from the homepage link.
+2. Spin the Builder Idea Roulette on the homepage.
+3. Copy the generated task prompt.
+4. In RoryPlans, click New Plan and select Create Empty Canvas plan.
+5. Paste the prompt into the RoryPlans chat and ask Rory to create the task in that plan.
+6. In RoryPlans Manage Agents, connect Claude Code or Codex through MCP.
+7. Assign the task to that agent.
+8. Open this repository in the coding agent and use the matching worker prompt from the homepage.
+9. Review the new page and the completed RoryPlans task.
 
 ## Add a page to the Build Wall
 
