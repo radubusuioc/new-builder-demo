@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Participant flow
 
-1. Open RoryPlans from the homepage link.
+1. Open RoryPlans from the homepage link and sign in, or create a free account — every step below is behind the login.
 2. Spin the Builder Idea Roulette on the homepage and copy the generated task prompt.
 3. In RoryPlans Manage Agents, connect Claude Code or Codex through MCP, then restart the agent.
 4. In RoryPlans, click New Plan and select Create Empty Canvas plan.

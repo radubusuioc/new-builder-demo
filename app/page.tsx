@@ -41,8 +41,8 @@ const steps = [
     id: "create-plan",
     title: "Create an empty canvas plan",
     body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
-    action: "Open RoryPlans",
-    href: "https://www.roryplans.ai",
+    action: "Open your plans",
+    href: "https://www.roryplans.ai/plans",
   },
   {
     id: "create-task",
@@ -55,7 +55,7 @@ const steps = [
     details: [
       "Open the plan and hover the row for the task you just created.",
       "Click the assignee cell on that row to open the Select Agent modal.",
-      "Choose the agent you connected in step 03 \u2014 not whichever agent is listed first.",
+      "Choose the agent you connected earlier \u2014 not whichever agent is listed first.",
       "Click Assign agent and wait for \u201cCreating schedule\u2026\u201d to finish.",
       "A green Run button now appears in that same assignee cell. Click it.",
       "The task is queued once Run succeeds. Your agent picks it up on its next pull.",
@@ -143,18 +143,21 @@ export default function Home() {
           </span>
           <div>
             <p className="eyebrow">Begin here</p>
-            <h2 id="open-roryplans-title">Open RoryPlans</h2>
+            <h2 id="open-roryplans-title">Open RoryPlans and sign in</h2>
             <p>
-              Launch RoryPlans in a new tab so it is ready for the plan, task,
-              and agent handoff steps ahead.
+              Everything ahead — plans, tasks, Manage Agents, API tokens — sits
+              behind a login, and visiting any of those pages signed out bounces
+              you back to the marketing site with no explanation. Open RoryPlans
+              in a new tab and sign in, or create a free account if you do not
+              have one yet.
             </p>
             <a
               className="button button-primary"
-              href="https://www.roryplans.ai"
+              href="https://www.roryplans.ai/login"
               target="_blank"
               rel="noreferrer"
             >
-              Open RoryPlans
+              Sign in to RoryPlans
               <span aria-hidden="true">↗</span>
             </a>
           </div>
