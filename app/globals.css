@@ -510,6 +510,18 @@ pre {
   margin-top: clamp(110px, 14vw, 190px);
 }
 
+.page-shell > .workflow:first-child {
+  margin-top: 0;
+}
+
+.workflow .roulette-card {
+  margin-top: clamp(56px, 8vw, 96px);
+}
+
+.workflow-remaining-steps {
+  margin-top: clamp(56px, 8vw, 96px);
+}
+
 .section-heading {
   max-width: 800px;
 }

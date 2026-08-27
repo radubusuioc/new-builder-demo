@@ -12,9 +12,17 @@ pnpm install`;
 
 const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task using {"agentId":"codex"}. Execute it in this repository, verify it, then call complete_task with the taskId, changed files, and a short factual summary. If blocked, call fail_task. Handle one task only.`;
 
+const connectAgentStep = {
+  number: "01",
+  title: "Connect your coding agent",
+  body: "Open Manage Agents, choose Claude Code or Codex, and follow the MCP connection instructions shown there.",
+  action: "Open Manage Agents",
+  href: "https://www.roryplans.ai/manage-agents",
+};
+
 const steps = [
   {
-    number: "02",
+    number: "03",
     id: "create-plan",
     title: "Create an empty canvas plan",
     body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
@@ -22,17 +30,10 @@ const steps = [
     href: "https://www.roryplans.ai",
   },
   {
-    number: "03",
+    number: "04",
     id: "create-task",
     title: "Add the task to your plan",
     body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
-  },
-  {
-    number: "04",
-    title: "Connect your coding agent",
-    body: "Open Manage Agents, choose Claude Code or Codex, and follow the MCP connection instructions shown there.",
-    action: "Open Manage Agents",
-    href: "https://www.roryplans.ai/manage-agents",
   },
   {
     number: "05",
@@ -69,8 +70,8 @@ export default function Home() {
             delegate the implementation to Claude Code or Codex.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#roulette-title">
-              Start with the Roulette
+            <a className="button button-primary" href="#how-it-works">
+              Start the builder loop
               <span aria-hidden="true">↓</span>
             </a>
             <Link className="button button-ghost" href="/builds">
@@ -113,18 +114,33 @@ export default function Home() {
       </section>
 
       <div className="page-shell">
-        <BuilderIdeaRoulette />
-
         <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
           <div className="section-heading">
             <p className="eyebrow">From idea to working page</p>
             <h2 id="workflow-title">Now run the builder loop</h2>
             <p>
-              The Roulette gave you the “what.” RoryPlans holds the intent and
-              handoff. Your coding agent handles the “how.”
+              Connect your coding agent first. Then choose the “what,” let
+              RoryPlans hold the intent and handoff, and delegate the “how.”
             </p>
           </div>
-          <ol className="steps-list" start={2}>
+          <ol className="steps-list">
+            <li className="step-card">
+              <span className="step-number" aria-hidden="true">
+                {connectAgentStep.number}
+              </span>
+              <div>
+                <h3>{connectAgentStep.title}</h3>
+                <p>{connectAgentStep.body}</p>
+                <a href={connectAgentStep.href} target="_blank" rel="noreferrer">
+                  {connectAgentStep.action} ↗
+                </a>
+              </div>
+            </li>
+          </ol>
+
+          <BuilderIdeaRoulette />
+
+          <ol className="steps-list workflow-remaining-steps" start={3}>
             {steps.map((step) => (
               <li className="step-card" id={step.id} key={step.number}>
                 <span className="step-number" aria-hidden="true">
