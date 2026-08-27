@@ -56,7 +56,7 @@ export function BuilderIdeaRoulette() {
               idleLabel="Copy prompt for Rory"
               className="button button-dark result-copy"
             />
-            <a className="text-link" href="#create-plan">
+            <a className="text-link" href="#connect-agent">
               Prompt copied? Continue to RoryPlans ↓
             </a>
           </>

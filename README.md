@@ -2,7 +2,7 @@
 
 A tiny Next.js starter for a 5–10 minute RoryPlans + Claude Code/Codex workshop.
 
-Participants spin the Builder Idea Roulette, copy the generated task into RoryPlans, assign it to a connected coding agent, and watch that agent add a small page to the Build Wall.
+Participants spin the Builder Idea Roulette, connect a coding agent, copy the generated task into RoryPlans, assign it to that agent, and watch it add a small page to the Build Wall.
 
 ## Run locally
 
@@ -17,14 +17,13 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Participant flow
 
-1. Spin the Builder Idea Roulette on the homepage.
-2. Copy the generated task prompt.
+1. Spin the Builder Idea Roulette on the homepage and copy the generated task prompt.
+2. In RoryPlans Manage Agents, connect Claude Code or Codex through MCP, then restart the agent.
 3. In RoryPlans, click New Plan and select Create Empty Canvas plan.
 4. Paste the prompt into the RoryPlans chat and ask Rory to create the task in that plan.
-5. In RoryPlans Manage Agents, connect Claude Code or Codex through MCP.
-6. Assign the task to that agent.
-7. Open this repository in the coding agent and use the matching worker prompt from the homepage.
-8. Review the new page and the completed RoryPlans task.
+5. Assign the task to the connected agent.
+6. Open this repository in the coding agent and use the matching worker prompt from the homepage.
+7. Review the new page and the completed RoryPlans task.
 
 ## Add a page to the Build Wall
 
