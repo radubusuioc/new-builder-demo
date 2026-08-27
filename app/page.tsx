@@ -15,23 +15,9 @@ const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task usi
 const steps = [
   {
     number: "03",
-    id: "create-plan",
-    title: "Create an empty canvas plan",
-    body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
-    action: "Open RoryPlans",
-    href: "https://www.roryplans.ai",
-  },
-  {
-    number: "04",
-    id: "create-task",
-    title: "Add the task to your plan",
-    body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
-  },
-  {
-    number: "05",
     id: "connect-agent",
     title: "Connect your coding agent",
-    body: "RoryPlans hands work to your agent over MCP. Connect it once from the Manage Agents page, then every task you assign lands in that agent\u2019s queue.",
+    body: "RoryPlans hands work to your agent over MCP. Connect it before you build the plan and task \u2014 the plugin install needs a restart of Claude Code or Codex, so getting it out of the way now keeps the rest of the loop uninterrupted.",
     details: [
       "In RoryPlans, open the Manage Agents page.",
       "Click Connect Platform.",
@@ -45,9 +31,23 @@ const steps = [
     href: "https://www.roryplans.ai/manage-agents",
   },
   {
+    number: "04",
+    id: "create-plan",
+    title: "Create an empty canvas plan",
+    body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
+    action: "Open RoryPlans",
+    href: "https://www.roryplans.ai",
+  },
+  {
+    number: "05",
+    id: "create-task",
+    title: "Add the task to your plan",
+    body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
+  },
+  {
     number: "06",
     title: "Assign the task",
-    body: "Return to your RoryPlans task, assign it to the connected agent, and run it so the work enters that agent’s queue.",
+    body: "Stay on your RoryPlans task, assign it to the agent you connected in step 03, and run it so the work enters that agent\u2019s queue.",
   },
   {
     number: "07",
