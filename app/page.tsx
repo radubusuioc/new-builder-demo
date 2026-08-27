@@ -14,18 +14,13 @@ const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task usi
 
 const stepNumber = (index: number) => String(index + 1).padStart(2, "0");
 
-const rouletteIndex = 0;
+const openingIndex = 0;
+
+const rouletteIndex = openingIndex + 1;
 
 const workflowStartIndex = rouletteIndex + 1;
 
 const steps = [
-  {
-    id: "sign-in",
-    title: "Sign in to RoryPlans",
-    body: "Everything from here on \u2014 plans, tasks, Manage Agents, API tokens \u2014 sits behind a login, and visiting any of those pages signed out bounces you to the marketing site with no explanation. Sign in first, or create a free account if you do not have one yet.",
-    action: "Open the sign-in page",
-    href: "https://www.roryplans.ai/login",
-  },
   {
     id: "connect-agent",
     title: "Connect your coding agent",
@@ -94,8 +89,8 @@ export default function Home() {
             delegate the implementation to Claude Code or Codex.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#roulette-title">
-              Start with the Roulette
+            <a className="button button-primary" href="#open-roryplans">
+              Start the Builder Loop
               <span aria-hidden="true">↓</span>
             </a>
             <Link className="button button-ghost" href="/builds">
@@ -138,6 +133,36 @@ export default function Home() {
       </section>
 
       <div className="page-shell">
+        <section
+          className="opening-step"
+          id="open-roryplans"
+          aria-labelledby="open-roryplans-title"
+        >
+          <span className="step-number" aria-hidden="true">
+            {stepNumber(openingIndex)}
+          </span>
+          <div>
+            <p className="eyebrow">Begin here</p>
+            <h2 id="open-roryplans-title">Open RoryPlans and sign in</h2>
+            <p>
+              Everything ahead — plans, tasks, Manage Agents, API tokens — sits
+              behind a login, and visiting any of those pages signed out bounces
+              you back to the marketing site with no explanation. Open RoryPlans
+              in a new tab and sign in, or create a free account if you do not
+              have one yet.
+            </p>
+            <a
+              className="button button-primary"
+              href="https://www.roryplans.ai/login"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Sign in to RoryPlans
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+
         <BuilderIdeaRoulette stepNumber={stepNumber(rouletteIndex)} />
 
         <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
