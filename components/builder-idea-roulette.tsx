@@ -24,7 +24,7 @@ export function BuilderIdeaRoulette() {
   return (
     <section className="roulette-card" aria-labelledby="roulette-title">
       <div className="roulette-intro">
-        <p className="eyebrow">Step 1 · Choose the outcome</p>
+        <p className="eyebrow">Step 2 · Choose the outcome</p>
         <h2 id="roulette-title">Spin the Builder Idea Roulette</h2>
         <p>
           Get a small page idea and a ready-to-send task prompt. Paste it into

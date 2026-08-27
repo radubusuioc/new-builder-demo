@@ -14,7 +14,7 @@ const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task usi
 
 const steps = [
   {
-    number: "02",
+    number: "03",
     id: "connect-agent",
     title: "Connect your coding agent",
     body: "RoryPlans hands work to your agent over MCP. Connect it before you build the plan and task \u2014 the plugin install needs a restart of Claude Code or Codex, so getting it out of the way now keeps the rest of the loop uninterrupted.",
@@ -31,7 +31,7 @@ const steps = [
     href: "https://www.roryplans.ai/manage-agents",
   },
   {
-    number: "03",
+    number: "04",
     id: "create-plan",
     title: "Create an empty canvas plan",
     body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
@@ -39,25 +39,25 @@ const steps = [
     href: "https://www.roryplans.ai",
   },
   {
-    number: "04",
+    number: "05",
     id: "create-task",
     title: "Add the task to your plan",
     body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
   },
   {
-    number: "05",
+    number: "06",
     title: "Assign the task",
-    body: "Stay on your RoryPlans task, assign it to the agent you connected in step 02, and run it so the work enters that agent\u2019s queue.",
+    body: "Stay on your RoryPlans task, assign it to the agent you connected in step 03, and run it so the work enters that agent\u2019s queue.",
   },
   {
-    number: "06",
+    number: "07",
     id: "pull-task",
     title: "Pull and implement",
     body: "Clone this repository, then start Claude Code or Codex inside it and paste the prompt for the agent you connected. It will pull one task, implement it here, verify the result, and report back to RoryPlans.",
     prompts: true,
   },
   {
-    number: "07",
+    number: "08",
     title: "Review the closed loop",
     body: "Open the new route, check the experience, then return to RoryPlans to see the completed task, summary, and changed files.",
   },
@@ -79,8 +79,8 @@ export default function Home() {
             delegate the implementation to Claude Code or Codex.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#roulette-title">
-              Start with the Roulette
+            <a className="button button-primary" href="#open-roryplans">
+              Start the Builder Loop
               <span aria-hidden="true">↓</span>
             </a>
             <Link className="button button-ghost" href="/builds">
@@ -123,6 +123,33 @@ export default function Home() {
       </section>
 
       <div className="page-shell">
+        <section
+          className="opening-step"
+          id="open-roryplans"
+          aria-labelledby="open-roryplans-title"
+        >
+          <span className="step-number" aria-hidden="true">
+            01
+          </span>
+          <div>
+            <p className="eyebrow">Begin here</p>
+            <h2 id="open-roryplans-title">Open RoryPlans</h2>
+            <p>
+              Launch RoryPlans in a new tab so it is ready for the plan, task,
+              and agent handoff steps ahead.
+            </p>
+            <a
+              className="button button-primary"
+              href="https://www.roryplans.ai"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open RoryPlans
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+
         <BuilderIdeaRoulette />
 
         <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
@@ -134,7 +161,7 @@ export default function Home() {
               handoff. Your coding agent handles the “how.”
             </p>
           </div>
-          <ol className="steps-list" start={2}>
+          <ol className="steps-list" start={3}>
             {steps.map((step) => (
               <li className="step-card" id={step.id} key={step.number}>
                 <span className="step-number" aria-hidden="true">
