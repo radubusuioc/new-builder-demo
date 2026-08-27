@@ -563,6 +563,24 @@ pre {
   text-underline-offset: 4px;
 }
 
+.step-details {
+  color: var(--muted);
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+  max-width: 720px;
+  padding-left: 20px;
+}
+
+.step-details li {
+  padding-left: 4px;
+}
+
+.step-details li::marker {
+  color: var(--purple);
+  font-weight: 800;
+}
+
 .step-setup {
   background: var(--white);
   border: 1px solid var(--line);

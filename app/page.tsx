@@ -29,8 +29,18 @@ const steps = [
   },
   {
     number: "04",
+    id: "connect-agent",
     title: "Connect your coding agent",
-    body: "Open Manage Agents, choose Claude Code or Codex, and follow the MCP connection instructions shown there.",
+    body: "RoryPlans hands work to your agent over MCP. Connect it once from the Manage Agents page, then every task you assign lands in that agent\u2019s queue.",
+    details: [
+      "In RoryPlans, open the Manage Agents page.",
+      "Click Connect Platform.",
+      "Choose Claude Code or Codex \u2014 whichever agent you plan to run.",
+      "Follow the instructions shown there to install the RoryPlans plugin for that platform.",
+      "Still on that screen, create an API token and add it to the plugin so the MCP server can authenticate.",
+      "Restart Claude Code or Codex so it picks up the new plugin and token.",
+      "Back in Manage Agents, confirm the agent shows as connected. You can now assign tasks to it.",
+    ],
     action: "Open Manage Agents",
     href: "https://www.roryplans.ai/manage-agents",
   },
@@ -133,6 +143,13 @@ export default function Home() {
                 <div>
                   <h3>{step.title}</h3>
                   <p>{step.body}</p>
+                  {step.details ? (
+                    <ol className="step-details">
+                      {step.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ol>
+                  ) : null}
                   {step.href ? (
                     <a href={step.href} target="_blank" rel="noreferrer">
                       {step.action} ↗
