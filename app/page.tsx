@@ -20,6 +20,13 @@ const workflowStartIndex = rouletteIndex + 1;
 
 const steps = [
   {
+    id: "sign-in",
+    title: "Sign in to RoryPlans",
+    body: "Everything from here on \u2014 plans, tasks, Manage Agents, API tokens \u2014 sits behind a login, and visiting any of those pages signed out bounces you to the marketing site with no explanation. Sign in first, or create a free account if you do not have one yet.",
+    action: "Open the sign-in page",
+    href: "https://www.roryplans.ai/login",
+  },
+  {
     id: "connect-agent",
     title: "Connect your coding agent",
     body: "RoryPlans hands work to your agent over MCP. Connect it before you build the plan and task \u2014 the plugin install needs a restart of Claude Code or Codex, so getting it out of the way now keeps the rest of the loop uninterrupted.",
@@ -39,8 +46,8 @@ const steps = [
     id: "create-plan",
     title: "Create an empty canvas plan",
     body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
-    action: "Open RoryPlans",
-    href: "https://www.roryplans.ai",
+    action: "Open your plans",
+    href: "https://www.roryplans.ai/plans",
   },
   {
     id: "create-task",
@@ -53,7 +60,7 @@ const steps = [
     details: [
       "Open the plan and hover the row for the task you just created.",
       "Click the assignee cell on that row to open the Select Agent modal.",
-      "Choose the agent you connected in step 02 \u2014 not whichever agent is listed first.",
+      "Choose the agent you connected earlier \u2014 not whichever agent is listed first.",
       "Click Assign agent and wait for \u201cCreating schedule\u2026\u201d to finish.",
       "A green Run button now appears in that same assignee cell. Click it.",
       "The task is queued once Run succeeds. Your agent picks it up on its next pull.",
