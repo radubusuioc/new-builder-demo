@@ -25,7 +25,7 @@ const steps = [
     number: "03",
     id: "create-task",
     title: "Add the task to your plan",
-    body: "Paste the Roulette brief into a new task on the canvas you just created.",
+    body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
   },
   {
     number: "04",
