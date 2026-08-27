@@ -380,6 +380,16 @@ a {
   padding: clamp(32px, 5vw, 64px);
 }
 
+.roulette-eyebrow {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.roulette-eyebrow .step-number {
+  color: var(--ink);
+}
+
 .roulette-intro h2,
 .section-heading h2,
 .subpage-heading h1 {
@@ -624,6 +634,12 @@ pre {
   letter-spacing: .12em;
   margin: 0;
   text-transform: uppercase;
+}
+
+.step-setup .setup-prereq {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 10px 0 0;
 }
 
 .step-setup pre {

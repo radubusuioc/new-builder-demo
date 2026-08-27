@@ -12,9 +12,16 @@ pnpm install`;
 
 const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task using {"agentId":"codex"}. Execute it in this repository, verify it, then call complete_task with the taskId, changed files, and a short factual summary. If blocked, call fail_task. Handle one task only.`;
 
+const stepNumber = (index: number) => String(index + 1).padStart(2, "0");
+
+const openingIndex = 0;
+
+const rouletteIndex = openingIndex + 1;
+
+const workflowStartIndex = rouletteIndex + 1;
+
 const steps = [
   {
-    number: "03",
     id: "connect-agent",
     title: "Connect your coding agent",
     body: "RoryPlans hands work to your agent over MCP. Connect it before you build the plan and task \u2014 the plugin install needs a restart of Claude Code or Codex, so getting it out of the way now keeps the rest of the loop uninterrupted.",
@@ -31,33 +38,36 @@ const steps = [
     href: "https://www.roryplans.ai/manage-agents",
   },
   {
-    number: "04",
     id: "create-plan",
     title: "Create an empty canvas plan",
     body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
-    action: "Open RoryPlans",
-    href: "https://www.roryplans.ai",
+    action: "Open your plans",
+    href: "https://www.roryplans.ai/plans",
   },
   {
-    number: "05",
     id: "create-task",
     title: "Add the task to your plan",
-    body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
+    body: "Paste the Roulette prompt into the RoryPlans chat and send it as copied. The chat only ever creates tasks in the plan you have open, so there is no plan to name and nothing to edit.",
   },
   {
-    number: "06",
-    title: "Assign the task",
-    body: "Stay on your RoryPlans task, assign it to the agent you connected in step 03, and run it so the work enters that agent\u2019s queue.",
+    title: "Assign the task, then run it",
+    body: "Assigning only records who owns the task. Running is what pushes it into the agent\u2019s queue, so do both \u2014 a task that is assigned but never run will never be picked up.",
+    details: [
+      "Open the plan and hover the row for the task you just created.",
+      "Click the assignee cell on that row to open the Select Agent modal.",
+      "Choose the agent you connected earlier \u2014 not whichever agent is listed first.",
+      "Click Assign agent and wait for \u201cCreating schedule\u2026\u201d to finish.",
+      "A green Run button now appears in that same assignee cell. Click it.",
+      "The task is queued once Run succeeds. Your agent picks it up on its next pull.",
+    ],
   },
   {
-    number: "07",
     id: "pull-task",
     title: "Pull and implement",
     body: "Clone this repository, then start Claude Code or Codex inside it and paste the prompt for the agent you connected. It will pull one task, implement it here, verify the result, and report back to RoryPlans.",
     prompts: true,
   },
   {
-    number: "08",
     title: "Review the closed loop",
     body: "Open the new route, check the experience, then return to RoryPlans to see the completed task, summary, and changed files.",
   },
@@ -129,28 +139,31 @@ export default function Home() {
           aria-labelledby="open-roryplans-title"
         >
           <span className="step-number" aria-hidden="true">
-            01
+            {stepNumber(openingIndex)}
           </span>
           <div>
             <p className="eyebrow">Begin here</p>
-            <h2 id="open-roryplans-title">Open RoryPlans</h2>
+            <h2 id="open-roryplans-title">Open RoryPlans and sign in</h2>
             <p>
-              Launch RoryPlans in a new tab so it is ready for the plan, task,
-              and agent handoff steps ahead.
+              Everything ahead — plans, tasks, Manage Agents, API tokens — sits
+              behind a login, and visiting any of those pages signed out bounces
+              you back to the marketing site with no explanation. Open RoryPlans
+              in a new tab and sign in, or create a free account if you do not
+              have one yet.
             </p>
             <a
               className="button button-primary"
-              href="https://www.roryplans.ai"
+              href="https://www.roryplans.ai/login"
               target="_blank"
               rel="noreferrer"
             >
-              Open RoryPlans
+              Sign in to RoryPlans
               <span aria-hidden="true">↗</span>
             </a>
           </div>
         </section>
 
-        <BuilderIdeaRoulette />
+        <BuilderIdeaRoulette stepNumber={stepNumber(rouletteIndex)} />
 
         <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
           <div className="section-heading">
@@ -161,11 +174,11 @@ export default function Home() {
               handoff. Your coding agent handles the “how.”
             </p>
           </div>
-          <ol className="steps-list" start={3}>
-            {steps.map((step) => (
-              <li className="step-card" id={step.id} key={step.number}>
+          <ol className="steps-list" start={workflowStartIndex + 1}>
+            {steps.map((step, index) => (
+              <li className="step-card" id={step.id} key={step.title}>
                 <span className="step-number" aria-hidden="true">
-                  {step.number}
+                  {stepNumber(workflowStartIndex + index)}
                 </span>
                 <div>
                   <h3>{step.title}</h3>
@@ -186,12 +199,16 @@ export default function Home() {
                     <>
                       <div className="step-setup">
                         <p className="setup-label">Clone the repository</p>
+                        <p className="setup-prereq">
+                          Needs Node 24 and pnpm — older Node still works, pnpm
+                          just prints an <code>Unsupported engine</code> warning.
+                        </p>
                         <pre>{cloneCommand}</pre>
                         <CopyButton text={cloneCommand} idleLabel="Copy clone commands" />
                         <p className="setup-note">
                           Then run <code>claude</code> or <code>codex</code> in the{" "}
                           <code>new-builder-demo</code> folder and paste the matching
-                          prompt below. Requires Node 24 and pnpm.
+                          prompt below.
                         </p>
                         <a href={repoUrl} target="_blank" rel="noreferrer">
                           View the repository on GitHub ↗
