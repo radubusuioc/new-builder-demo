@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CopyButton } from "@/components/copy-button";
 import { builderIdeas, taskPromptForIdea } from "@/lib/ideas";
 
-export function BuilderIdeaRoulette() {
+export function BuilderIdeaRoulette({ stepNumber }: { stepNumber: string }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const selectedIdea =
     selectedIndex === null ? null : builderIdeas[selectedIndex];
@@ -24,7 +24,10 @@ export function BuilderIdeaRoulette() {
   return (
     <section className="roulette-card" aria-labelledby="roulette-title">
       <div className="roulette-intro">
-        <p className="eyebrow">Step 2 · Choose the outcome</p>
+        <p className="eyebrow roulette-eyebrow">
+          <span className="step-number">{stepNumber}</span>
+          Choose the outcome
+        </p>
         <h2 id="roulette-title">Spin the Builder Idea Roulette</h2>
         <p>
           Get a small page idea and a ready-to-send task prompt. Paste it into

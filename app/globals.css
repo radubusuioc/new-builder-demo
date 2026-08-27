@@ -380,6 +380,16 @@ a {
   padding: clamp(32px, 5vw, 64px);
 }
 
+.roulette-eyebrow {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.roulette-eyebrow .step-number {
+  color: var(--ink);
+}
+
 .roulette-intro h2,
 .section-heading h2,
 .subpage-heading h1 {

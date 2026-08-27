@@ -12,9 +12,16 @@ pnpm install`;
 
 const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task using {"agentId":"codex"}. Execute it in this repository, verify it, then call complete_task with the taskId, changed files, and a short factual summary. If blocked, call fail_task. Handle one task only.`;
 
+const stepNumber = (index: number) => String(index + 1).padStart(2, "0");
+
+const openingIndex = 0;
+
+const rouletteIndex = openingIndex + 1;
+
+const workflowStartIndex = rouletteIndex + 1;
+
 const steps = [
   {
-    number: "03",
     id: "connect-agent",
     title: "Connect your coding agent",
     body: "RoryPlans hands work to your agent over MCP. Connect it before you build the plan and task \u2014 the plugin install needs a restart of Claude Code or Codex, so getting it out of the way now keeps the rest of the loop uninterrupted.",
@@ -31,7 +38,6 @@ const steps = [
     href: "https://www.roryplans.ai/manage-agents",
   },
   {
-    number: "04",
     id: "create-plan",
     title: "Create an empty canvas plan",
     body: "In RoryPlans, click New Plan and select Create Empty Canvas plan. That canvas is where your task will live.",
@@ -39,25 +45,21 @@ const steps = [
     href: "https://www.roryplans.ai",
   },
   {
-    number: "05",
     id: "create-task",
     title: "Add the task to your plan",
     body: "Paste the Roulette prompt into the RoryPlans chat and ask Rory to create a task with those details in the empty canvas plan you just created.",
   },
   {
-    number: "06",
     title: "Assign the task",
     body: "Stay on your RoryPlans task, assign it to the agent you connected in step 03, and run it so the work enters that agent\u2019s queue.",
   },
   {
-    number: "07",
     id: "pull-task",
     title: "Pull and implement",
     body: "Clone this repository, then start Claude Code or Codex inside it and paste the prompt for the agent you connected. It will pull one task, implement it here, verify the result, and report back to RoryPlans.",
     prompts: true,
   },
   {
-    number: "08",
     title: "Review the closed loop",
     body: "Open the new route, check the experience, then return to RoryPlans to see the completed task, summary, and changed files.",
   },
@@ -129,7 +131,7 @@ export default function Home() {
           aria-labelledby="open-roryplans-title"
         >
           <span className="step-number" aria-hidden="true">
-            01
+            {stepNumber(openingIndex)}
           </span>
           <div>
             <p className="eyebrow">Begin here</p>
@@ -150,7 +152,7 @@ export default function Home() {
           </div>
         </section>
 
-        <BuilderIdeaRoulette />
+        <BuilderIdeaRoulette stepNumber={stepNumber(rouletteIndex)} />
 
         <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
           <div className="section-heading">
@@ -161,11 +163,11 @@ export default function Home() {
               handoff. Your coding agent handles the “how.”
             </p>
           </div>
-          <ol className="steps-list" start={3}>
-            {steps.map((step) => (
-              <li className="step-card" id={step.id} key={step.number}>
+          <ol className="steps-list" start={workflowStartIndex + 1}>
+            {steps.map((step, index) => (
+              <li className="step-card" id={step.id} key={step.title}>
                 <span className="step-number" aria-hidden="true">
-                  {step.number}
+                  {stepNumber(workflowStartIndex + index)}
                 </span>
                 <div>
                   <h3>{step.title}</h3>
