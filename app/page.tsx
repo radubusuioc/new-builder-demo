@@ -4,19 +4,13 @@ import { CopyButton } from "@/components/copy-button";
 import { builds } from "@/lib/builds";
 import { repoUrl } from "@/lib/repo";
 
-const claudeCodePrompt = `You are an agent that pulls one job at a time from RoryPlans over MCP, executes it in this environment (repo, tools, browser if available), then reports back so Rory can mark the run complete.
-If a roryplans:next skill is available, run it with agentId "claude-code" and stop after one task — it handles the full pull/execute/report cycle.
-If it is not, run ToolSearch on the RoryPlans MCP to load the tool schemas for get_next_task, complete_task and fail_task. Then pull one job using get_next_task with { "agentId": "claude-code" }, follow the returned prompt and execute the task.
-When done, call complete_task with that taskId, the output and a real summary. If blocked, call fail_task. One task per cycle.`;
+const claudeCodePrompt = `/roryplans:next`;
 
 const cloneCommand = `git clone ${repoUrl}.git
 cd new-builder-demo
 pnpm install`;
 
-const codexPrompt = `You are a Codex agent that pulls one RoryPlans task at a time over MCP, executes it in this environment, then reports back so RoryPlans can mark the run complete.
-If a roryplans:next skill is available, run it with agentId "codex" and stop after one task — it handles the full pull/execute/report cycle.
-If it is not, use the RoryPlans MCP tools directly: pull one job with get_next_task using { "agentId": "codex" }, follow the returned prompt, and execute the task.
-When done, call complete_task with that taskId, output, and a real summary. If blocked, call fail_task with the reason. One task per cycle.`;
+const codexPrompt = `/roryplans:next`;
 
 const stepNumber = (index: number) => String(index + 1).padStart(2, "0");
 
