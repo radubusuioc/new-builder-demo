@@ -318,6 +318,11 @@ a {
   min-height: 600px;
 }
 
+.workflow .roulette-card,
+.workflow .roulette-card + .steps-list {
+  margin-top: clamp(48px, 7vw, 88px);
+}
+
 .roulette-intro {
   background: var(--lime);
   display: flex;

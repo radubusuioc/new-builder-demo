@@ -16,11 +16,7 @@ const stepNumber = (index: number) => String(index + 1).padStart(2, "0");
 
 const openingIndex = 0;
 
-const rouletteIndex = openingIndex + 1;
-
-const workflowStartIndex = rouletteIndex + 1;
-
-const steps = [
+const stepsBeforeRoulette = [
   {
     id: "connect-agent",
     title: "Connect your coding agent",
@@ -44,6 +40,15 @@ const steps = [
     action: "Open your plans",
     href: "https://www.roryplans.ai/plans",
   },
+];
+
+const workflowStartIndex = openingIndex + 1;
+
+const rouletteIndex = workflowStartIndex + stepsBeforeRoulette.length;
+
+const workflowResumeIndex = rouletteIndex + 1;
+
+const stepsAfterRoulette = [
   {
     id: "create-task",
     title: "Add the task to your plan",
@@ -72,6 +77,87 @@ const steps = [
     body: "Open the new route, check the experience, then return to RoryPlans to see the completed task, summary, and changed files.",
   },
 ];
+
+type Step = {
+  id?: string;
+  title: string;
+  body: string;
+  details?: string[];
+  action?: string;
+  href?: string;
+  prompts?: boolean;
+};
+
+function StepCard({ step, index }: { step: Step; index: number }) {
+  return (
+    <li className="step-card" id={step.id}>
+      <span className="step-number" aria-hidden="true">
+        {stepNumber(index)}
+      </span>
+      <div>
+        <h3>{step.title}</h3>
+        <p>{step.body}</p>
+        {step.details ? (
+          <ol className="step-details">
+            {step.details.map((detail) => (
+              <li key={detail}>{detail}</li>
+            ))}
+          </ol>
+        ) : null}
+        {step.href ? (
+          <a href={step.href} target="_blank" rel="noreferrer">
+            {step.action} ↗
+          </a>
+        ) : null}
+        {step.prompts ? (
+          <>
+            <div className="step-setup">
+              <p className="setup-label">Clone the repository</p>
+              <p className="setup-prereq">
+                Needs Node 24 and pnpm — older Node still works, pnpm
+                just prints an <code>Unsupported engine</code> warning.
+              </p>
+              <pre>{cloneCommand}</pre>
+              <CopyButton text={cloneCommand} idleLabel="Copy clone commands" />
+              <p className="setup-note">
+                Then run <code>claude</code> or <code>codex</code> in the{" "}
+                <code>new-builder-demo</code> folder and paste the matching
+                prompt below.
+              </p>
+              <a href={repoUrl} target="_blank" rel="noreferrer">
+                View the repository on GitHub ↗
+              </a>
+            </div>
+            <div className="prompt-grid">
+              <article className="agent-card">
+                <div className="agent-card-heading">
+                  <span className="agent-monogram claude-monogram">C</span>
+                  <div>
+                    <p>Anthropic</p>
+                    <h4>Claude Code</h4>
+                  </div>
+                </div>
+                <pre>{claudeCodePrompt}</pre>
+                <CopyButton text={claudeCodePrompt} idleLabel="Copy Claude Code prompt" />
+              </article>
+              <article className="agent-card">
+                <div className="agent-card-heading">
+                  <span className="agent-monogram codex-monogram">O</span>
+                  <div>
+                    <p>OpenAI</p>
+                    <h4>Codex</h4>
+                  </div>
+                </div>
+                <pre>{codexPrompt}</pre>
+                <CopyButton text={codexPrompt} idleLabel="Copy Codex prompt" />
+              </article>
+            </div>
+          </>
+        ) : null}
+      </div>
+    </li>
+  );
+}
 
 export default function Home() {
   return (
@@ -144,85 +230,35 @@ export default function Home() {
           </div>
         </section>
 
-        <BuilderIdeaRoulette stepNumber={stepNumber(rouletteIndex)} />
-
         <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
           <div className="section-heading">
             <p className="eyebrow">From idea to working page</p>
             <h2 id="workflow-title">Now run the builder loop</h2>
             <p>
-              The Roulette gave you the “what.” RoryPlans holds the intent and
-              handoff. Your coding agent handles the “how.”
+              Set up the agent and the plan first. The Roulette gives you the
+              “what,” RoryPlans holds the intent and handoff, and your coding
+              agent handles the “how.”
             </p>
           </div>
           <ol className="steps-list" start={workflowStartIndex + 1}>
-            {steps.map((step, index) => (
-              <li className="step-card" id={step.id} key={step.title}>
-                <span className="step-number" aria-hidden="true">
-                  {stepNumber(workflowStartIndex + index)}
-                </span>
-                <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.body}</p>
-                  {step.details ? (
-                    <ol className="step-details">
-                      {step.details.map((detail) => (
-                        <li key={detail}>{detail}</li>
-                      ))}
-                    </ol>
-                  ) : null}
-                  {step.href ? (
-                    <a href={step.href} target="_blank" rel="noreferrer">
-                      {step.action} ↗
-                    </a>
-                  ) : null}
-                  {step.prompts ? (
-                    <>
-                      <div className="step-setup">
-                        <p className="setup-label">Clone the repository</p>
-                        <p className="setup-prereq">
-                          Needs Node 24 and pnpm — older Node still works, pnpm
-                          just prints an <code>Unsupported engine</code> warning.
-                        </p>
-                        <pre>{cloneCommand}</pre>
-                        <CopyButton text={cloneCommand} idleLabel="Copy clone commands" />
-                        <p className="setup-note">
-                          Then run <code>claude</code> or <code>codex</code> in the{" "}
-                          <code>new-builder-demo</code> folder and paste the matching
-                          prompt below.
-                        </p>
-                        <a href={repoUrl} target="_blank" rel="noreferrer">
-                          View the repository on GitHub ↗
-                        </a>
-                      </div>
-                      <div className="prompt-grid">
-                        <article className="agent-card">
-                          <div className="agent-card-heading">
-                            <span className="agent-monogram claude-monogram">C</span>
-                            <div>
-                              <p>Anthropic</p>
-                              <h4>Claude Code</h4>
-                            </div>
-                          </div>
-                          <pre>{claudeCodePrompt}</pre>
-                          <CopyButton text={claudeCodePrompt} idleLabel="Copy Claude Code prompt" />
-                        </article>
-                        <article className="agent-card">
-                          <div className="agent-card-heading">
-                            <span className="agent-monogram codex-monogram">O</span>
-                            <div>
-                              <p>OpenAI</p>
-                              <h4>Codex</h4>
-                            </div>
-                          </div>
-                          <pre>{codexPrompt}</pre>
-                          <CopyButton text={codexPrompt} idleLabel="Copy Codex prompt" />
-                        </article>
-                      </div>
-                    </>
-                  ) : null}
-                </div>
-              </li>
+            {stepsBeforeRoulette.map((step, index) => (
+              <StepCard
+                index={workflowStartIndex + index}
+                key={step.title}
+                step={step}
+              />
+            ))}
+          </ol>
+
+          <BuilderIdeaRoulette stepNumber={stepNumber(rouletteIndex)} />
+
+          <ol className="steps-list" start={workflowResumeIndex + 1}>
+            {stepsAfterRoulette.map((step, index) => (
+              <StepCard
+                index={workflowResumeIndex + index}
+                key={step.title}
+                step={step}
+              />
             ))}
           </ol>
         </section>

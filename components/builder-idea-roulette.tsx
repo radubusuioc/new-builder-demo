@@ -59,8 +59,8 @@ export function BuilderIdeaRoulette({ stepNumber }: { stepNumber: string }) {
               idleLabel="Copy prompt for Rory"
               className="button button-dark result-copy"
             />
-            <a className="text-link" href="#connect-agent">
-              Prompt copied? Continue to RoryPlans ↓
+            <a className="text-link" href="#create-task">
+              Prompt copied? Add it to your plan ↓
             </a>
           </>
         ) : (
