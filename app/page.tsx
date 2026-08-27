@@ -14,7 +14,9 @@ const codexPrompt = `Use the RoryPlans MCP. Pull one task with get_next_task usi
 
 const stepNumber = (index: number) => String(index + 1).padStart(2, "0");
 
-const rouletteIndex = 0;
+const openingIndex = 0;
+
+const rouletteIndex = openingIndex + 1;
 
 const workflowStartIndex = rouletteIndex + 1;
 
@@ -53,7 +55,7 @@ const steps = [
     details: [
       "Open the plan and hover the row for the task you just created.",
       "Click the assignee cell on that row to open the Select Agent modal.",
-      "Choose the agent you connected in step 02 \u2014 not whichever agent is listed first.",
+      "Choose the agent you connected in step 03 \u2014 not whichever agent is listed first.",
       "Click Assign agent and wait for \u201cCreating schedule\u2026\u201d to finish.",
       "A green Run button now appears in that same assignee cell. Click it.",
       "The task is queued once Run succeeds. Your agent picks it up on its next pull.",
@@ -87,8 +89,8 @@ export default function Home() {
             delegate the implementation to Claude Code or Codex.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#roulette-title">
-              Start with the Roulette
+            <a className="button button-primary" href="#open-roryplans">
+              Start the Builder Loop
               <span aria-hidden="true">↓</span>
             </a>
             <Link className="button button-ghost" href="/builds">
@@ -131,6 +133,33 @@ export default function Home() {
       </section>
 
       <div className="page-shell">
+        <section
+          className="opening-step"
+          id="open-roryplans"
+          aria-labelledby="open-roryplans-title"
+        >
+          <span className="step-number" aria-hidden="true">
+            {stepNumber(openingIndex)}
+          </span>
+          <div>
+            <p className="eyebrow">Begin here</p>
+            <h2 id="open-roryplans-title">Open RoryPlans</h2>
+            <p>
+              Launch RoryPlans in a new tab so it is ready for the plan, task,
+              and agent handoff steps ahead.
+            </p>
+            <a
+              className="button button-primary"
+              href="https://www.roryplans.ai"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open RoryPlans
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+
         <BuilderIdeaRoulette stepNumber={stepNumber(rouletteIndex)} />
 
         <section className="workflow" id="how-it-works" aria-labelledby="workflow-title">
