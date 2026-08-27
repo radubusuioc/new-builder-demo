@@ -333,6 +333,36 @@ a {
   padding: clamp(70px, 9vw, 130px) 24px;
 }
 
+.opening-step {
+  align-items: start;
+  background: var(--white);
+  border: 1px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--purple);
+  display: grid;
+  gap: clamp(24px, 5vw, 80px);
+  grid-template-columns: 76px 1fr;
+  margin-bottom: clamp(48px, 7vw, 88px);
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.opening-step h2 {
+  font-size: clamp(32px, 4vw, 54px);
+  letter-spacing: -.05em;
+  line-height: 1;
+  margin: 0;
+}
+
+.opening-step p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 17px;
+  margin: 16px 0 22px;
+  max-width: 680px;
+}
+
+.opening-step .eyebrow {
+  margin-bottom: 12px;
+}
+
 .roulette-card {
   background: var(--white);
   border: 1px solid var(--ink);
@@ -986,6 +1016,12 @@ a.build-card:hover {
   .step-card {
     gap: 16px;
     grid-template-columns: 42px 1fr;
+  }
+
+  .opening-step {
+    gap: 16px;
+    grid-template-columns: 42px 1fr;
+    padding: 24px;
   }
 
   .inline-heading {
