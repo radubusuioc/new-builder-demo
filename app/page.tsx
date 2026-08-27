@@ -167,12 +167,16 @@ export default function Home() {
                     <>
                       <div className="step-setup">
                         <p className="setup-label">Clone the repository</p>
+                        <p className="setup-prereq">
+                          Needs Node 24 and pnpm — older Node still works, pnpm
+                          just prints an <code>Unsupported engine</code> warning.
+                        </p>
                         <pre>{cloneCommand}</pre>
                         <CopyButton text={cloneCommand} idleLabel="Copy clone commands" />
                         <p className="setup-note">
                           Then run <code>claude</code> or <code>codex</code> in the{" "}
                           <code>new-builder-demo</code> folder and paste the matching
-                          prompt below. Requires Node 24 and pnpm.
+                          prompt below.
                         </p>
                         <a href={repoUrl} target="_blank" rel="noreferrer">
                           View the repository on GitHub ↗
