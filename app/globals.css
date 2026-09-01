@@ -745,6 +745,16 @@ a.build-card:hover {
   top: 0;
 }
 
+.accent-purple::before {
+  background: var(--purple);
+  content: "";
+  height: 8px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .build-card-empty {
   background: transparent;
   border-style: dashed;
@@ -921,6 +931,121 @@ a.build-card:hover {
   margin-top: 6px;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.confidence-meter {
+  align-items: start;
+  display: grid;
+  gap: clamp(32px, 5vw, 72px);
+  grid-template-columns: minmax(280px, .8fr) minmax(320px, 1fr);
+}
+
+.confidence-form {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--purple);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3.5vw, 40px);
+}
+
+.confidence-form label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.confidence-range {
+  accent-color: var(--purple);
+  cursor: pointer;
+  margin: 28px 0 0;
+  width: 100%;
+}
+
+.confidence-scale {
+  color: var(--muted);
+  display: flex;
+  font-size: 10px;
+  font-weight: 800;
+  justify-content: space-between;
+  letter-spacing: .12em;
+  margin: 10px 0 28px;
+  text-transform: uppercase;
+}
+
+.confidence-form .button {
+  align-self: flex-start;
+}
+
+.confidence-readout {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  box-shadow: 14px 14px 0 var(--ink);
+  min-width: 0;
+  padding: clamp(24px, 3.5vw, 44px);
+}
+
+.confidence-number {
+  font-size: clamp(56px, 9vw, 104px);
+  font-weight: 900;
+  letter-spacing: -.07em;
+  line-height: .85;
+  margin: 0;
+}
+
+.confidence-number span {
+  color: var(--muted);
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
+
+.confidence-track {
+  background: #eeece5;
+  border: 1px solid var(--ink);
+  height: 16px;
+  margin: 24px 0 28px;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  background: var(--lime);
+  height: 100%;
+  transition: width 180ms ease;
+}
+
+.confidence-band {
+  font-size: clamp(26px, 3.4vw, 40px);
+  letter-spacing: -.05em;
+  line-height: 1;
+  margin: 0;
+}
+
+.confidence-message {
+  color: var(--muted);
+  margin: 14px 0 0;
+}
+
+.confidence-action {
+  border-top: 1px solid var(--line);
+  margin-top: 26px;
+  padding-top: 22px;
+}
+
+.confidence-action p:last-child {
+  font-size: 17px;
+  margin: 0;
+}
+
 .site-footer {
   align-items: center;
   border-top: 1px solid var(--line);
@@ -954,7 +1079,8 @@ a.build-card:hover {
 
   .roulette-card,
   .badge-maker,
-  .remix-card {
+  .remix-card,
+  .confidence-meter {
     grid-template-columns: 1fr;
   }
 
