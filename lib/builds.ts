@@ -23,4 +23,12 @@ export const builds: Build[] = [
     builder: "The New Builder Lab",
     accent: "lime",
   },
+  {
+    slug: "confidence-meter",
+    title: "Project Confidence Meter",
+    description:
+      "A slider that turns a gut-feel confidence score into an encouraging read and one concrete next action.",
+    builder: "The New Builder Lab",
+    accent: "purple",
+  },
 ];
