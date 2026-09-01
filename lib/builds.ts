@@ -2,7 +2,7 @@ export type Build = {
   slug: string;
   title: string;
   description: string;
-  builder: string;
+  githubUser: string;
   accent: string;
 };
 
@@ -12,7 +12,7 @@ export const builds: Build[] = [
     title: "Personal AI Builder Badge",
     description:
       "A live badge maker that turns your name and role into a small declaration of builder intent.",
-    builder: "The New Builder Lab",
+    githubUser: "radubusuioc",
     accent: "lime",
   },
   {
@@ -20,7 +20,7 @@ export const builds: Build[] = [
     title: "Prompt Remix Button",
     description:
       "Mix a user, a problem, and a constraint into a playful build prompt.",
-    builder: "The New Builder Lab",
+    githubUser: "pithy-name",
     accent: "lime",
   },
   {
@@ -28,7 +28,7 @@ export const builds: Build[] = [
     title: "Project Confidence Meter",
     description:
       "A slider that turns a gut-feel confidence score into an encouraging read and one concrete next action.",
-    builder: "The New Builder Lab",
+    githubUser: "radubusuioc",
     accent: "purple",
   },
 ];

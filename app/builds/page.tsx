@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BuildCard } from "@/components/build-card";
 import { builds } from "@/lib/builds";
 
 export const metadata: Metadata = {
@@ -24,20 +25,15 @@ export default function BuildsPage() {
 
       <div className="build-grid build-grid-full">
         {builds.map((build, index) => (
-          <Link className={`build-card accent-${build.accent}`} href={`/builds/${build.slug}`} key={build.slug}>
-            <span className="build-index">{String(index + 1).padStart(2, "0")}</span>
-            <span className="build-route">/builds/{build.slug}</span>
-            <h2>{build.title}</h2>
-            <p>{build.description}</p>
-            <span className="build-author">Built by {build.builder}</span>
-          </Link>
+          <BuildCard build={build} index={index} key={build.slug} />
         ))}
         <div className="build-card build-card-empty">
           <span className="empty-plus" aria-hidden="true">+</span>
           <h2>Add the next build</h2>
           <p>
             Create a page under <code>app/builds/&lt;slug&gt;/page.tsx</code>, then
-            add one entry to <code>lib/builds.ts</code>.
+            add one entry to <code>lib/builds.ts</code> with your GitHub
+            username so the card credits you.
           </p>
         </div>
       </div>
