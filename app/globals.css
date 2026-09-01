@@ -876,6 +876,51 @@ a.build-card:hover {
   max-width: 60%;
 }
 
+.remix-card {
+  align-items: start;
+  background: var(--white);
+  border: 1px solid var(--ink);
+  box-shadow: 12px 12px 0 var(--ink);
+  display: grid;
+  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: minmax(260px, .6fr) minmax(340px, 1fr);
+  padding: clamp(32px, 5vw, 64px);
+}
+
+.remix-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.remix-panel .button {
+  align-self: flex-start;
+}
+
+.remix-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.remix-placeholder {
+  border: 1px dashed var(--line);
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.remix-placeholder p {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.remix-placeholder span {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
 .site-footer {
   align-items: center;
   border-top: 1px solid var(--line);
@@ -908,7 +953,8 @@ a.build-card:hover {
   }
 
   .roulette-card,
-  .badge-maker {
+  .badge-maker,
+  .remix-card {
     grid-template-columns: 1fr;
   }
 
