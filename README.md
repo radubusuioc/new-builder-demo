@@ -31,7 +31,9 @@ Open [http://localhost:3000](http://localhost:3000).
 Each contribution requires two small changes:
 
 1. Create `app/builds/<slug>/page.tsx`.
-2. Add its metadata to the `builds` array in `lib/builds.ts`.
+2. Add its metadata to the `builds` array in `lib/builds.ts`, including the
+   `githubUser` of the account that opens the pull request — the Build Wall
+   card credits that username and links to the profile.
 
 The starter includes `app/builds/builder-badge/page.tsx` as an example.
 

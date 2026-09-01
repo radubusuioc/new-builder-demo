@@ -713,9 +713,26 @@ pre {
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-a.build-card:hover {
+.build-card:not(.build-card-empty):hover,
+.build-card:focus-within {
   box-shadow: 8px 8px 0 var(--ink);
   transform: translate(-4px, -4px);
+}
+
+.build-card-link {
+  text-decoration: none;
+}
+
+.build-card-link::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.build-author-link {
+  position: relative;
+  text-underline-offset: 3px;
+  z-index: 1;
 }
 
 .build-card h2,

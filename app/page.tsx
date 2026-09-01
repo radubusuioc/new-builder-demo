@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BuilderIdeaRoulette } from "@/components/builder-idea-roulette";
 import { CopyButton } from "@/components/copy-button";
+import { BuildCard } from "@/components/build-card";
 import { builds } from "@/lib/builds";
 import { repoUrl } from "@/lib/repo";
 
@@ -275,12 +276,7 @@ export default function Home() {
           </div>
           <div className="build-grid">
             {builds.map((build) => (
-              <Link className={`build-card accent-${build.accent}`} href={`/builds/${build.slug}`} key={build.slug}>
-                <span className="build-route">/builds/{build.slug}</span>
-                <h3>{build.title}</h3>
-                <p>{build.description}</p>
-                <span className="build-author">Built by {build.builder}</span>
-              </Link>
+              <BuildCard build={build} headingLevel="h3" key={build.slug} />
             ))}
             <div className="build-card build-card-empty">
               <span className="empty-plus" aria-hidden="true">+</span>
