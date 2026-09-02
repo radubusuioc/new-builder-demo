@@ -31,4 +31,12 @@ export const builds: Build[] = [
     githubUser: "radubusuioc",
     accent: "purple",
   },
+  {
+    slug: "idea-voting-board",
+    title: "Three-Idea Voting Board",
+    description:
+      "A local live tally for choosing which small community idea should get built next.",
+    githubUser: "radubusuioc",
+    accent: "lime",
+  },
 ];

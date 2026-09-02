@@ -1063,6 +1063,169 @@ pre {
   margin: 0;
 }
 
+.idea-board {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  box-shadow: 12px 12px 0 var(--ink);
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.idea-board-summary {
+  align-items: end;
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  padding-bottom: 28px;
+}
+
+.idea-board-summary h2 {
+  font-size: clamp(32px, 4vw, 54px);
+  letter-spacing: -.05em;
+  line-height: 1;
+  margin: 0;
+}
+
+.idea-board-status {
+  max-width: 330px;
+  text-align: right;
+}
+
+.idea-board-status span {
+  background: var(--lime);
+  border: 1px solid var(--ink);
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  padding: 6px 10px;
+  text-transform: uppercase;
+}
+
+.idea-board-status p {
+  font-size: 14px;
+  font-weight: 800;
+  margin: 10px 0 0;
+}
+
+.idea-vote-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.idea-vote-card {
+  --idea-accent: var(--lime);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(22px, 2.5vw, 30px);
+  position: relative;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.idea-vote-card::before {
+  background: var(--idea-accent);
+  content: "";
+  height: 8px;
+  inset: 0 0 auto;
+  position: absolute;
+}
+
+.idea-vote-card-leading {
+  border-color: var(--ink);
+  box-shadow: 6px 6px 0 var(--idea-accent);
+  transform: translate(-3px, -3px);
+}
+
+.idea-accent-purple {
+  --idea-accent: var(--purple);
+}
+
+.idea-accent-orange {
+  --idea-accent: var(--orange);
+}
+
+.idea-vote-card-topline {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.idea-number {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -.08em;
+}
+
+.idea-standing {
+  background: #eeece5;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  padding: 6px 9px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.idea-vote-card-leading .idea-standing {
+  background: var(--idea-accent);
+}
+
+.idea-vote-card h3 {
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -.05em;
+  line-height: 1;
+  margin: 48px 0 12px;
+}
+
+.idea-description {
+  color: var(--muted);
+  margin: 0 0 32px;
+}
+
+.idea-vote-actions {
+  align-items: end;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.idea-vote-count {
+  align-items: baseline;
+  align-self: stretch;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.idea-vote-count strong {
+  font-size: 48px;
+  letter-spacing: -.07em;
+  line-height: .8;
+}
+
+.idea-vote-count span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.idea-vote-actions .button {
+  align-self: stretch;
+  justify-content: space-between;
+}
+
 .site-footer {
   align-items: center;
   border-top: 1px solid var(--line);
@@ -1097,8 +1260,13 @@ pre {
   .roulette-card,
   .badge-maker,
   .remix-card,
-  .confidence-meter {
+  .confidence-meter,
+  .idea-vote-grid {
     grid-template-columns: 1fr;
+  }
+
+  .idea-vote-card h3 {
+    margin-top: 30px;
   }
 
   .prompt-grid {
@@ -1160,6 +1328,19 @@ pre {
 
   .build-grid {
     grid-template-columns: 1fr;
+  }
+
+  .idea-board {
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .idea-board-summary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .idea-board-status {
+    text-align: left;
   }
 
   .badge-preview {
